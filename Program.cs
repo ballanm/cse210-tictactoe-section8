@@ -86,7 +86,7 @@ class TicTacToe
         while (!joe) {
             Console.Write("Choose a square 1 through 9");
             string PlayerMove = Console.ReadLine();
-            int PlayerNumber = Convert.ToInt32(PlayerMove);
+            int PlayerNumber = Convert.ToInt32(PlayerMove) - 1;
             if (board[PlayerNumber] == "x" || board[PlayerNumber] == "o"){
                 Console.WriteLine ($"You returned {PlayerMove}");
             }
@@ -99,7 +99,7 @@ class TicTacToe
                 joe = true;
                 }
             if (joe){
-                board [PlayerNumber - 1] = currentPlayer;
+                board [PlayerNumber] = currentPlayer;
             }
         }
     }
