@@ -1,4 +1,5 @@
-﻿class TicTacToe
+﻿using System;
+class TicTacToe
 {
     static void Main(string[] args)
     {
@@ -10,8 +11,7 @@
         {
             DisplayBoard(board);
 
-            int choice = GetMoveChoice(currentPlayer);
-            MakeMove(board, choice, currentPlayer);
+            GetMoveChoice(board , currentPlayer);
 
             currentPlayer = GetNextPlayer(currentPlayer);
         }
@@ -24,7 +24,7 @@
     /// <returns>A list of 9 strings representing each square.</returns>
     static List<string> GetNewBoard()
     {
-        return new List<string> {"1" , "2"};
+        return new List<string> {"1" , "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9"};
     }
 
     /// <summary>Displays the board in a 3x3 grid.</summary>
@@ -70,26 +70,37 @@
     /// <returns>The next players sign (x or o)</returns>
     static string GetNextPlayer(string currentPlayer)
     {
-        return "x";
+        string NextPlayer = "x";
+        if (currentPlayer == "x"){
+            NextPlayer = "o";
+        }
+        return NextPlayer;
     }
 
     /// <summary>Gets the 1-based spot number associated with the user's choice.</summary>
     /// <param name="currentPlayer">The sign (x or o) of the current player.</param>
     /// <returns>A 1-based spot number (not a 0-based index)</returns>
-    static int GetMoveChoice(string currentPlayer)
+    static void GetMoveChoice(List<string> board, string currentPlayer)
     {
-        return 1;
-    }
-
-    /// <summary>
-    /// Places the current players mark on the board at the desired spot.
-    /// This method does NOT check to ensure the spot is available.
-    /// </summary>
-    /// <param name="board">The current board</param>
-    /// <param name="choice">The 1-based spot number (not a 0-based index).</param>
-    /// <param name="currentPlayer">The current player's sign (x or o)</param>
-    static void MakeMove(List<string> board, int choice, string currentPlayer)
-    {
-
+        bool joe = false;
+        while (!joe) {
+            Console.Write("Choose a square 1 through 9");
+            string PlayerMove = Console.ReadLine();
+            int PlayerNumber = Convert.ToInt32(PlayerMove);
+            if (board[PlayerNumber] == "x" || board[PlayerNumber] == "o"){
+                Console.WriteLine ($"You returned {PlayerMove}");
+            }
+            if (PlayerNumber <= 9 || PlayerNumber >= 1){
+                joe = true;
+                Console.WriteLine ($"You returned {PlayerMove}");
+            }
+            else {
+                PlayerMove = ($"{PlayerNumber}");
+                joe = true;
+                }
+            if (joe){
+                board [PlayerNumber - 1] = currentPlayer;
+            }
+        }
     }
 }
