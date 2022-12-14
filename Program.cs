@@ -10,6 +10,7 @@ class TicTacToe
         while (!CheckWin(board))
         {
             DisplayBoard(board);
+            Console.Write($"Open it is {currentPlayer}'s turn");
 
             GetMoveChoice(board , currentPlayer);
 
@@ -48,39 +49,39 @@ class TicTacToe
     static bool CheckWin(List<string> board)
         { bool IsWinner = false;
             //Winning Condition For First Row
-            if (board[1] == board[2] && board[2] == board[3])
+            if (board[0] == board[1] && board[1] == board[2])
             {
                 IsWinner =  true;
             }
             //Winning Condition For Second Row
-            else if (board[4] == board[5] && board[5] == board[6])
+            else if (board[3] == board[4] && board[4] == board[5])
             {
                 IsWinner =  true;
             }
             //Winning Condition For Third Row
-            else if (board[6] == board[7] && board[7] == board[8])
+            else if (board[5] == board[6] && board[6] == board[7])
             {
                 IsWinner =  true;
             }
-            else if (board[1] == board[4] && board[4] == board[7])
+            else if (board[0] == board[3] && board[3] == board[6])
             {
                 IsWinner =  true;
             }
             //Winning Condition For Second Column
-            else if (board[2] == board[5] && board[5] == board[8])
+            else if (board[1] == board[4] && board[4] == board[7])
             {
                 IsWinner =  true;
             }
             //Winning Condition For Third Column
-            else if (board[3] == board[6] && board[6] == board[9])
+            else if (board[2] == board[5] && board[5] == board[8])
             {
                 IsWinner =  true;
             }
-            else if (board[1] == board[5] && board[5] == board[9])
+            else if (board[0] == board[4] && board[4] == board[8])
             {
                 IsWinner =  true;
             }
-            else if (board[3] == board[5] && board[5] == board[7])
+            else if (board[2] == board[4] && board[4] == board[6])
             {
                 IsWinner =  true;
             }
