@@ -7,13 +7,14 @@ class TicTacToe
         List<string> board = GetNewBoard();
         string currentPlayer = "x";
 
-        while (!IsGameOver(board))
+        while (!CheckWin(board))
         {
             DisplayBoard(board);
 
             GetMoveChoice(board , currentPlayer);
 
             currentPlayer = GetNextPlayer(currentPlayer);
+
         }
 
         DisplayBoard(board);
@@ -43,20 +44,53 @@ class TicTacToe
     /// </summary>
     /// <param name="board">The current board.</param>
     /// <returns>True if the game is over</returns>
-    static bool IsGameOver(List<string> board)
-    {
-        return IsWinner(board, "x") || IsWinner (board, "o") || IsTie(board);
-    }
+    
+    static bool CheckWin(List<string> board)
+        { bool IsWinner = false;
+            //Winning Condition For First Row
+            if (board[1] == board[2] && board[2] == board[3])
+            {
+                IsWinner =  true;
+            }
+            //Winning Condition For Second Row
+            else if (board[4] == board[5] && board[5] == board[6])
+            {
+                IsWinner =  true;
+            }
+            //Winning Condition For Third Row
+            else if (board[6] == board[7] && board[7] == board[8])
+            {
+                IsWinner =  true;
+            }
+            else if (board[1] == board[4] && board[4] == board[7])
+            {
+                IsWinner =  true;
+            }
+            //Winning Condition For Second Column
+            else if (board[2] == board[5] && board[5] == board[8])
+            {
+                IsWinner =  true;
+            }
+            //Winning Condition For Third Column
+            else if (board[3] == board[6] && board[6] == board[9])
+            {
+                IsWinner =  true;
+            }
+            else if (board[1] == board[5] && board[5] == board[9])
+            {
+                IsWinner =  true;
+            }
+            else if (board[3] == board[5] && board[5] == board[7])
+            {
+                IsWinner =  true;
+            }
+            return IsWinner;
+        }
 
     /// <summary>Determines if the provided player has a tic tac toe.</summary>
     /// <param name="board">The current board</param>
     /// <param name="player">The player to check for a win</param>
     /// <returns></returns>
-    static bool IsWinner(List<string> board, string player)
-    {
-        return false;
-    }
-
     /// <summary>Determines if the board is full with no more moves possible.</summary>
     /// <param name="board">The current board.</param>
     /// <returns>True if the board is full.</returns>
